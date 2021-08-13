@@ -9,28 +9,26 @@
 
 // Solution 1
 
-const getMissingNumbers = (arr) => {
-  const len = arr.length;
-  for (let i = 0; i < len; i++) {
-    const index = Math.abs(arr[i]) - 1;
-
-    if (arr[index] > 0) {
-      arr[index] *= -1;
+const getMissingNumbers = arr => {
+  for (let i = 0; i < arr.length; i++) {
+    const ind = Math.abs(arr[i]) - 1; //всем элементы значение на 1 меньше.индекс массива=значению
+    
+    if (arr[ind] > 0) {
+       //все элементы делаем отридцательными
+      arr[ind] *= -1;
     }
   }
-
-  const result = [];
-  for (let i = 0; i < len; i++) {
-    if (arr[i] > 0) {
-      result.push(i + 1);
-    }
+  console.log(arr);
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {//проходим по массиву  по полож и добавляем тех что нет в массиве(полож)
+    if (arr[i] > 0) {result.push(i + 1)} 
   }
 
   return result;
 };
 
-console.log(getMissingNumbers([4, 3, 2, 7, 8, 2, 3, 1])); // [5,6]
-console.log(getMissingNumbers([1, 1])); // [2]
+console.log(getMissingNumbers([4, 3,2,6])); // [1]
+console.log(getMissingNumbers([1,6,10,1])); // [2,3,4]
 console.log(getMissingNumbers([1, 2])); // []
 
 
